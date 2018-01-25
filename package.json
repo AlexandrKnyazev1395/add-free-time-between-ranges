@@ -1,0 +1,28 @@
+{
+  "name": "find-free-time-in-ranges",
+  "version": "0.0.1",
+  "description": "Find free time between date ranges",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandrKnyazev1395/find-free-time.git"
+  },
+  "keywords": [
+    "find",
+    "free",
+    "time",
+    "ranges"
+  ],
+  "author": {
+    "name": "alexknyazev",
+    "email": "AlexandrKnyazev1395@mail.ru"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexandrKnyazev1395/find-free-time/issues"
+  },
+  "homepage": "https://github.com/AlexandrKnyazev1395/find-free-time#readme"
+}
