@@ -36,7 +36,6 @@ module.exports = function (startDate, endDate, isSlpitByHour) {
     }
     tempDateEnd = new Date(freeSlotDateEnd);
     if (tempDateEnd.getTime() - tempDateStart.getTime() > 1000) {
-        debugger;
         const durationInHours = (tempDateEnd - tempDateStart) / 1000 / 60 / 60;
         freeSlots.push({
             durationInHours,
