@@ -1,5 +1,5 @@
 {
-  "name": "find-free-time-in-ranges",
+  "name": "add-free-time-between-ranges",
   "version": "0.0.1",
   "description": "Find free time between date ranges",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexandrKnyazev1395/find-free-time.git"
+    "url": "git+https://github.com/AlexandrKnyazev1395/add-free-time-between-ranges.git"
   },
   "keywords": [
     "find",
@@ -22,7 +22,7 @@
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AlexandrKnyazev1395/find-free-time/issues"
+    "url": "https://github.com/AlexandrKnyazev1395/add-free-time-between-ranges/issues"
   },
-  "homepage": "https://github.com/AlexandrKnyazev1395/find-free-time#readme"
+  "homepage": "https://github.com/AlexandrKnyazev1395/add-free-time-between-ranges#readme"
 }
