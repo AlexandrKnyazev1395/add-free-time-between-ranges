@@ -14,21 +14,24 @@ const timeSlots = [
     {
       "id": "3",
       "dateStart": "2018-01-25T14:06:44.063Z",
-      "dateEnd": "2018-01-26T14:36:44.063Z",
+      "dateEnd": "2018-01-25T14:36:44.063Z",
     },
     {
       "id": "4",
-      "dateStart": "2018-01-27T15:00:00.654Z",
-      "dateEnd": "2018-01-27T17:00:00.654Z",
+      "dateStart": "2018-01-25T15:00:00.063Z",
+      "dateEnd": "2018-01-25T17:00:00.063Z",
     }
 ]
 const rangeHourStart = 8;
 const rangeHourEnd = 23;
+const isSplitByHour = true;
 
 const options = {
   rangeHourStart,
   rangeHourEnd,
-  timeSlots
+  timeSlots,
+  isSplitByHour
 }
 
-const timeSlotsWithFreeTime = addFreeTimeToRange(options)
+const timeSlotsWithFreeTime = addFreeTimeToRange(options);
+console.log(timeSlotsWithFreeTime);

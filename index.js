@@ -1,8 +1,11 @@
+const calculateFreeTime = require('./calculateFreeTime');
+
 function addFreeTimeToRange(params) {
   const {
     rangeHourStart,
     rangeHourEnd,
-    timeSlots
+    timeSlots,
+    isSplitByHour
   } = params;
   let slotsWithFreeTime = [];
   for (let i = 0; i < timeSlots.length; i++) {
@@ -12,46 +15,46 @@ function addFreeTimeToRange(params) {
     if (i === 0) {
       const dayDateStart = new Date(new Date(slot.dateStart).setHours(rangeHourStart, 0, 0));
       if (slotDateStart > dayDateStart) {
-        const durationInHours = (slotDateStart - dayDateStart) / 1000 / 60 / 60;
-        const freeSlotDateStart = dayDateStart;
-        const freeSlotDateEnd = slotDateEnd;
+        const {
+          totalDurationInHours,
+          freeSlots
+        } = calculateFreeTime(dayDateStart, slotDateStart, isSplitByHour);
         slotsWithFreeTime.push({
           isFree: true,
-          durationInHours,
-          freeSlotDateStart,
-          freeSlotDateEnd
+          totalDurationInHours,
+          freeSlots
         })
       }
     }
     else {
       const previousSlot = timeSlots[i - 1];
       const previousDateEnd = new Date(previousSlot.dateEnd);
-      if (previousDateEnd !== slotDateStart) {
-        const durationInHours = (slotDateStart - previousDateEnd) / 1000 / 60 / 60;
-        const freeSlotDateStart = previousDateEnd;
-        const freeSlotDateEnd = slotDateStart;
+      if (previousDateEnd.getTime() !== slotDateStart.getTime()) {
+        const {
+          totalDurationInHours,
+          freeSlots
+        } = calculateFreeTime(previousDateEnd, slotDateStart, isSplitByHour);
         slotsWithFreeTime.push({
           isFree: true,
-          durationInHours,
-          freeSlotDateStart,
-          freeSlotDateEnd
+          totalDurationInHours,
+          freeSlots
         })
       }
     }
-    slot.durationInHours = (slotDateStart - slotDateEnd) / 1000 / 60 / 60;
+    slot.durationInHours = (slotDateEnd - slotDateStart) / 1000 / 60 / 60;
     slotsWithFreeTime.push(slot);
 
     if (i === timeSlots.length - 1) {
       const dayDateEnd = new Date(new Date(slot.dateEnd).setHours(rangeHourEnd, 0, 0))
       if (slotDateEnd < dayDateEnd) {
-        let durationInHours = (dayDateEnd - slotDateEnd) / 1000 / 60 / 60;
-        const freeSlotDateStart = slotDateEnd;
-        const freeSlotDateEnd = dayDateEnd;
+        const {
+          totalDurationInHours,
+          freeSlots
+        } = calculateFreeTime(slotDateEnd, dayDateEnd, isSplitByHour);
         slotsWithFreeTime.push({
           isFree: true,
-          durationInHours,
-          freeSlotDateStart,
-          freeSlotDateEnd
+          totalDurationInHours,
+          freeSlots
         })
       }
     }
