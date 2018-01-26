@@ -1,6 +1,6 @@
 {
   "name": "add-free-time-between-ranges",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Find free time between date ranges",
   "main": "index.js",
   "scripts": {
