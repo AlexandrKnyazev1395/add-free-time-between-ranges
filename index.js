@@ -1,13 +1,30 @@
 const calculateFreeTime = require('./calculateFreeTime');
 
-function addFreeTimeToRange(params) {
+function addFreeTimeBetweenRanges(params) {
   const {
-    rangeHourStart,
-    rangeHourEnd,
+    rangeDateStart,
+    rangeDateEnd,
     timeSlots,
     isSplitByHour
   } = params;
+
+  const rangeHourStart = new Date(rangeDateStart).getHours();
+  const rangeHourEnd =  new Date(rangeDateEnd).getHours();
+
   let slotsWithFreeTime = [];
+  if(!timeSlots.length) {
+    const {
+      totalDurationInHours,
+      freeSlots
+    } = calculateFreeTime(new Date(rangeDateStart), new Date(rangeDateEnd), isSplitByHour);
+    slotsWithFreeTime.push({
+      isFree: true,
+      totalDurationInHours,
+      freeSlots
+    })
+    return slotsWithFreeTime;
+  }
+
   for (let i = 0; i < timeSlots.length; i++) {
     const slot = timeSlots[i];
     const slotDateStart = new Date(slot.dateStart);
@@ -62,4 +79,4 @@ function addFreeTimeToRange(params) {
   return slotsWithFreeTime;
 }
 
-module.exports.addFreeTimeToRange = addFreeTimeToRange;
+module.exports.addFreeTimeBetweenRanges = addFreeTimeBetweenRanges;

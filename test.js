@@ -1,4 +1,4 @@
-const addFreeTimeToRange = require('./index.js').addFreeTimeToRange;
+const addFreeTimeBetweenRanges = require('./index.js').addFreeTimeBetweenRanges;
 
 const timeSlots = [
     {
@@ -22,16 +22,16 @@ const timeSlots = [
       "dateEnd": "2018-01-25T17:00:00.063Z",
     }
 ]
-const rangeHourStart = 8;
-const rangeHourEnd = 23;
+const rangeDateStart = new Date(new Date().setHours(8,0,0,0)).toISOString();
+const rangeDateEnd = new Date(new Date().setHours(23,0,0,0)).toISOString();
 const isSplitByHour = true;
 
 const options = {
-  rangeHourStart,
-  rangeHourEnd,
+  rangeDateStart,
+  rangeDateEnd,
   timeSlots,
   isSplitByHour
 }
 
-const timeSlotsWithFreeTime = addFreeTimeToRange(options);
+const timeSlotsWithFreeTime = addFreeTimeBetweenRanges(options);
 console.log(timeSlotsWithFreeTime);
