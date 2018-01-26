@@ -1,4 +1,5 @@
 const calculateFreeTime = require('./calculateFreeTime');
+const sortByDate = require('./sortByDate')
 
 function addFreeTimeBetweenRanges(params) {
   const {
@@ -25,8 +26,10 @@ function addFreeTimeBetweenRanges(params) {
     return slotsWithFreeTime;
   }
 
-  for (let i = 0; i < timeSlots.length; i++) {
-    const slot = timeSlots[i];
+  const sortedTimeSlots = sortByDate(timeSlots);
+
+  for (let i = 0; i < sortedTimeSlots.length; i++) {
+    const slot = sortedTimeSlots[i];
     const slotDateStart = new Date(slot.dateStart);
     const slotDateEnd = new Date(slot.dateEnd);
     if (i === 0) {
@@ -44,7 +47,7 @@ function addFreeTimeBetweenRanges(params) {
       }
     }
     else {
-      const previousSlot = timeSlots[i - 1];
+      const previousSlot = sortedTimeSlots[i - 1];
       const previousDateEnd = new Date(previousSlot.dateEnd);
       if (previousDateEnd.getTime() !== slotDateStart.getTime()) {
         const {
@@ -61,7 +64,7 @@ function addFreeTimeBetweenRanges(params) {
     slot.durationInHours = (slotDateEnd - slotDateStart) / 1000 / 60 / 60;
     slotsWithFreeTime.push(slot);
 
-    if (i === timeSlots.length - 1) {
+    if (i === sortedTimeSlots.length - 1) {
       const dayDateEnd = new Date(new Date(slot.dateEnd).setHours(rangeHourEnd, 0, 0))
       if (slotDateEnd < dayDateEnd) {
         const {
