@@ -16,12 +16,12 @@ function addFreeTimeBetweenRanges(params) {
   if(!timeSlots.length) {
     const {
       totalDurationInHours,
-      freeSlots
+      freeSlotsByHour
     } = calculateFreeTime(new Date(rangeDateStart), new Date(rangeDateEnd), isSplitByHour);
     slotsWithFreeTime.push({
       isFree: true,
       totalDurationInHours,
-      freeSlots
+      freeSlotsByHour
     })
     return slotsWithFreeTime;
   }
@@ -37,12 +37,12 @@ function addFreeTimeBetweenRanges(params) {
       if (slotDateStart > dayDateStart) {
         const {
           totalDurationInHours,
-          freeSlots
+          freeSlotsByHour
         } = calculateFreeTime(dayDateStart, slotDateStart, isSplitByHour);
         slotsWithFreeTime.push({
           isFree: true,
           totalDurationInHours,
-          freeSlots
+          freeSlotsByHour
         })
       }
     }
@@ -52,12 +52,12 @@ function addFreeTimeBetweenRanges(params) {
       if (previousDateEnd.getTime() !== slotDateStart.getTime()) {
         const {
           totalDurationInHours,
-          freeSlots
+          freeSlotsByHour
         } = calculateFreeTime(previousDateEnd, slotDateStart, isSplitByHour);
         slotsWithFreeTime.push({
           isFree: true,
           totalDurationInHours,
-          freeSlots
+          freeSlotsByHour
         })
       }
     }
@@ -69,12 +69,12 @@ function addFreeTimeBetweenRanges(params) {
       if (slotDateEnd < dayDateEnd) {
         const {
           totalDurationInHours,
-          freeSlots
+          freeSlotsByHour
         } = calculateFreeTime(slotDateEnd, dayDateEnd, isSplitByHour);
         slotsWithFreeTime.push({
           isFree: true,
           totalDurationInHours,
-          freeSlots
+          freeSlotsByHour
         })
       }
     }
