@@ -21,7 +21,9 @@ function addFreeTimeBetweenRanges(params) {
     slotsWithFreeTime.push({
       isFree: true,
       totalDurationInHours,
-      freeSlotsByHour
+      freeSlotsByHour,
+      freeSlotDateStart,
+      freeSlotDateEnd,
     })
     return slotsWithFreeTime;
   }
@@ -42,7 +44,9 @@ function addFreeTimeBetweenRanges(params) {
         slotsWithFreeTime.push({
           isFree: true,
           totalDurationInHours,
-          freeSlotsByHour
+          freeSlotsByHour,
+          freeSlotDateStart,
+          freeSlotDateEnd,
         })
       }
     }
@@ -57,7 +61,9 @@ function addFreeTimeBetweenRanges(params) {
         slotsWithFreeTime.push({
           isFree: true,
           totalDurationInHours,
-          freeSlotsByHour
+          freeSlotsByHour,
+          freeSlotDateStart,
+          freeSlotDateEnd,
         })
       }
     }
@@ -74,7 +80,9 @@ function addFreeTimeBetweenRanges(params) {
         slotsWithFreeTime.push({
           isFree: true,
           totalDurationInHours,
-          freeSlotsByHour
+          freeSlotsByHour,
+          freeSlotDateStart,
+          freeSlotDateEnd,
         })
       }
     }
